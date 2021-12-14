@@ -1,5 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import CreateCard from './components/CreateCard';
+import DisplayCard from './components/DisplayCard';
 import './style.css';
 
 const App = () => (
@@ -12,6 +19,12 @@ const App = () => (
       - aplikace 5 stránek (úvod, vyzvednutí přáníčka, vytvoření přáníčko, zobrazení kódu vytvořeného přáníčka, samotné přáníčko)
       - použij router (musíš si ho nainstalovat)
     */}
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={ <CreateCard />} />
+        <Route path="/card/:id" element={ <DisplayCard /> } />
+      </Routes>
+    </BrowserRouter>
     <p>Všechno (asi) funguje.</p>
   </>
 );
