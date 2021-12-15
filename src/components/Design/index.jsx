@@ -1,8 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import EnterSender from '../EnterSender';
+import EnterText from '../EnterText';
 import Header from '../Header';
+import SelectBackground from '../SelectBackground';
+import SelectColor from '../SelectColor';
+import SelectCover from '../SelectCover';
+import SelectMusic from '../SelectMusic';
+import SelectSnow from '../SelectSnow';
+import SendCard from '../SendCard';
+
+import configuration from '../../configuration';
 
 const Design = () => {
   const title='Vytvořit přáníčko';
+
+  const [background, setBackground] = useState('');
+  const [color, setColor] = useState('');
+  const [cover, setCover] = useState('');
+  const [snow, setSnow] = useState('');
+  const [music, setMusic] = useState('');
+  const [text, setText] = useState('');
+  const [sender, setSender] = useState('');
+
+  const cardData = {};  // object 
+
+  const handleBackground = (e) => {
+    console.log('e.target.id : ' + e.target.id)
+    setBackground(e.target.id)
+  }
+  const handleColor = (e) => {
+    console.log(e.target.id)
+    setColor(e.target.id)
+  }
+  const handleCover = (e) => {
+    console.log(e.target.value)
+    setCover(e.target.value)
+  }
+  const handleSnow = (e) => {
+    console.log(e.target.value)
+    setSnow(e.target.value)
+  }
+  const handleMusic = (e) => {
+    console.log(e.target.value)
+    setMusic(e.target.value)
+  }
+  const handleText = (e) => {
+    console.log(e.target.value)
+    setText(e.target.value)
+  }
+  const handleSender = (e) => {
+    console.log(e.target.value)
+    setSender(e.target.value)
+  }
+  const handleSubmitBtn = (e) => {
+    console.log(e.target.value)
+  }
 
   return (
     <>
@@ -16,178 +68,28 @@ const Design = () => {
             <form className="configurator">
 
               {/* <!-- pozadí stránky	--> */}
-              <div className="field">
-                <label className="field__label">Pozadí stránky</label>
-
-                <div className="field__swatch-group field__swatch-group--round">
-
-                  <div className="field__swatch">
-                    <input type="radio" name="background" id="background-red" checked />
-                    <label for="background-red" className="swatch--red" data-description="červená"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="background" id="background-green" />
-                    <label for="background-green" className="swatch--green" data-description="zelená"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="background" id="background-blue" />
-                    <label for="background-blue" className="swatch--blue" data-description="modrá"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="background" id="background-gold" />
-                    <label for="background-gold" className="swatch--gold" data-description="zlatá"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="background" id="background-tree" />
-                    <label for="background-tree" className="swatch--tree" data-description="stromeček"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="background" id="background-decorations" />
-                    <label for="background-decorations" className="swatch--decorations" data-description="ozdoby"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="background" id="background-snow" />
-                    <label for="background-snow" className="swatch--snow" data-description="sníh"></label>
-                  </div>
-
-                </div>
-
-              </div>
-
+              <SelectBackground handleBackground={handleBackground} backgroundSet={configuration.backgrounds} selection={background} />
 
               {/* <!-- barva přáníčka	--> */}
-              <div className="field">
-                <label className="field__label">Barva přáníčka</label>
-
-                <div className="field__swatch-group field__swatch-group--round">
-
-                  <div className="field__swatch">
-                    <input type="radio" name="color" id="color-red" checked />
-                    <label for="color-red" className="swatch--red" data-description="červená"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="color" id="color-green" />
-                    <label for="color-green" className="swatch--green" data-description="zelená"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="color" id="color-blue" />
-                    <label for="color-blue" className="swatch--blue" data-description="modrá"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="color" id="color-gold" />
-                    <label for="color-gold" className="swatch--gold" data-description="zlatá"></label>
-                  </div>
-
-                </div>
-
-              </div>
-
+              <SelectColor handleColor={handleColor} colorSet={configuration.colors} color={color} />
 
               {/* <!-- obrázek na obálce	--> */}
-              <div className="field">
-                <label className="field__label">Obrázek na obálce</label>
-
-                <div className="field__swatch-group field__swatch-group--big">
-
-                  <div className="field__swatch">
-                    <input type="radio" name="cover" id="cover-gifts" checked />
-                    <label for="cover-gifts" className="swatch--cover-gifts" data-description="dárečky"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="cover" id="cover-decorations" />
-                    <label for="cover-decorations" className="swatch--cover-decorations" data-description="ozdoby"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="cover" id="cover-snowflakes" />
-                    <label for="cover-snowflakes" className="swatch--cover-snowflakes" data-description="vločky"></label>
-                  </div>
-
-                  <div className="field__swatch">
-                    <input type="radio" name="cover" id="cover-trees" />
-                    <label for="cover-trees" className="swatch--cover-trees" data-description="stromečky"></label>
-                  </div>
-
-                </div>
-
-              </div>
-
+              <SelectCover handleCover={handleCover} coverSet={configuration.covers} cover={cover} />
 
               {/* <!-- intenzita sněžení na pozadí	--> */}
-              <div className="field">
-                <label className="field__label ">Sníh na pozadí</label>
-
-                <div className="field__radio-group">
-                  <div className="field__radio">
-                    <input type="radio" name="snow" id="snow-0" checked />
-                    <label for="snow-0">bez sněhu</label>
-                  </div>
-
-                  <div className="field__radio">
-                    <input type="radio" name="snow" id="snow-1" />
-                    <label for="snow-1">málo</label>
-                  </div>
-
-
-                  <div className="field__radio">
-                    <input type="radio" name="snow" id="snow-2" />
-                    <label for="snow-2">hodně</label>
-                  </div>
-                </div>
-              </div>
-
+              <SelectSnow handleSnow={handleSnow} snowSet={configuration.snow} snow={snow} />
 
               {/* <!-- hudba	--> */}
-              <div className="field">
-                <label className="field__label">Hudba</label>
-
-                <div className="field__radio-group">
-                  <div className="field__radio">
-                    <input type="radio" name="music" id="music-jingle-bells" checked />
-                    <label for="music-jingle-bells">Rolničky, roličky</label>
-                  </div>
-
-                  <div className="field__radio">
-                    <input type="radio" name="music" id="music-silent-night" />
-                    <label for="music-silent-night">Tichá noc</label>
-                  </div>
-
-
-                  <div className="field__radio">
-                    <input type="radio" name="music" id="music-god-rest" />
-                    <label for="music-god-rest">Pokoj Vám</label>
-                  </div>
-                </div>
-              </div>
-
+              <SelectMusic handleMusic={handleMusic} musicSet={configuration.music} music={music} />
 
               {/* <!-- text	--> */}
-              <div className="field">
-                <label className="field__label" for="text">Text uvnitř přáníčka</label>
-                <textarea className="field__input" name="text" id="text" rows="3" maxlength="100" autocomplete="off"></textarea>
-                <p className="field__description">Zbývá <strong>37</strong>/100 znaků.</p>
-              </div>
-
+              <EnterText handleText={handleText} text={text}/>
 
               {/* <!-- odesílatel	--> */}
-              <div className="field">
-                <label className="field__label" for="sender">Odesílatel (podpis)</label>
-                <input className="field__input" type="text" name="sender" id="sender" rows="3" maxlength="20" autocomplete="off" />
-              </div>
-
+              <EnterSender handleSender={handleSender} sender={sender} />
 
               {/* <!-- tlačítko pro odeslání --> */}
-              <button type="submit" className="button button--big mt-30">Uložit přáníčko</button>
+              <SendCard handleSubmitBtn={handleSubmitBtn} cardData={cardData} />
 
             </form>
 
