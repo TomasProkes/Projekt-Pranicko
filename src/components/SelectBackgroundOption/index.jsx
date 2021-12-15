@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SelectBackgroundOption = ({handleBackground, desc, id, className, selection}) => (
+const SelectBackgroundOption = ({handleBackground, desc, id, className, isChecked, backgroundVal}) => (
   <div className="field__swatch">
-    <input onChange={handleBackground} type="radio" name="background" id={id} checked={id === selection} />
+    <input onChange={(e) => handleBackground(e, backgroundVal)} type="radio" name="background" id={id} checked={isChecked} />
     <label for={id} className={className} data-description={desc}></label>
   </div>
 );
