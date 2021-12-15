@@ -1,12 +1,10 @@
 import React from 'react';
 
-const SelectColorOption = ({theme, desc, is_checked}) => {
-  return (
-    <div className="field__swatch">
-      <input type="radio" name="color" id={`color-${theme}`} checked={is_checked} />
-      <label for={`color-${theme}`} className={`swatch--${theme}`} data-description={desc}></label>
-    </div>
-  )
-};
+const SelectColorOption = ({handleColor, desc, id, className, isChecked, colorVal}) => (
+  <div className="field__swatch">
+    <input onChange={(e) => handleColor(e, colorVal)} type="radio" name="color" id={id} checked={isChecked} />
+    <label for={id} className={className} data-description={desc}></label>
+  </div>
+);
 
 export default SelectColorOption;

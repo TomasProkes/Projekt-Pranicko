@@ -8,9 +8,10 @@ const SelectBackground = ({handleBackground, backgroundSet, selection}) => (
     <div className="field__swatch-group field__swatch-group--round">
       {
         backgroundSet.map(background => {
-          const className = `swatch--${background.value}`;
-          const id = `background-${background.value}`;
-          return <SelectBackgroundOption handleBackground={handleBackground} desc={background.description} className={className} id={id} selection={selection} />
+          const className = `swatch--${background.value}`
+          const id = `background-${background.value}`
+          const isChecked = background.value === selection
+          return <SelectBackgroundOption handleBackground={handleBackground} desc={background.description} className={className} id={id} isChecked={isChecked} backgroundVal={background.value} />
         })
       }
     </div>
