@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EnterText = () => {
+const EnterText = ({handleText, text}) => {
   
   return (
     <div className="field">

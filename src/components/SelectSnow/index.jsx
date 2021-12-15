@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectSnowOption from '../SelectSnowOption';
 
-const SelectSnow = () => {
+const SelectSnow = ({handleSnow, snowSet, snow}) => {
   const desc_snow_0 = 'bez sněhu'
   const desc_snow_1 = 'málo'
   const desc_snow_2 = 'hodně'

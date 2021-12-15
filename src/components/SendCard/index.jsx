@@ -1,9 +1,13 @@
 import React from 'react';
 
-const SendCard = () => {
+const SendCard = ({handleSubmitBtn, cardData}) => {
+
+  // const handleClick = (e) => {
+  //   console.log(e.target.value);
+  // }
   
   return (
-    <button type="submit" className="button button--big mt-30">Uložit přáníčko</button>    
+    <button onClick={handleSubmitBtn} type="submit" className="button button--big mt-30">Uložit přáníčko</button>    
   )
 };
 

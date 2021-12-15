@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SelectImageOption = ({theme, desc, is_checked}) => {
+const SelectCoverOption = ({theme, desc, is_checked}) => {
   return (
     <div className="field__swatch">
       <input type="radio" name="cover" id={`cover-${theme}`} checked={is_checked} />
@@ -9,4 +9,4 @@ const SelectImageOption = ({theme, desc, is_checked}) => {
   )
 };
 
-export default SelectImageOption;
+export default SelectCoverOption;

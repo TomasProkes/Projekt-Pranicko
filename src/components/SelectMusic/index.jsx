@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectMusicOption from '../SelectMusicOption';
 
-const SelectMusic = () => {
+const SelectMusic = ({handleMusic, musicSet, music}) => {
   const desc_jingle_bells = 'Rolničky, rolničky'
   const desc_silent_night = 'Tichá noc'
   const desc_god_rest = 'Pokoj Vám'

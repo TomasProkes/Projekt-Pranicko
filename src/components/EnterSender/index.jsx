@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EnterSender = () => {
+const EnterSender = ({handleSender, sender}) => {
   
   return (
     <div className="field">

@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectColorOption from '../SelectColorOption';
 
-const SelectColor = () => {
+const SelectColor = ({handleColor, colorSet, color}) => {
   const desc_red = 'červená'
   const desc_green = 'zelená'
   const desc_blue = 'modrá'
