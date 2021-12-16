@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SelectCoverOption = ({theme, desc, is_checked}) => {
+const SelectCoverOption = ({handleCover, desc, id, className, isChecked, coverVal}) => {
   return (
     <div className="field__swatch">
-      <input type="radio" name="cover" id={`cover-${theme}`} checked={is_checked} />
-      <label for={`cover-${theme}`} className={`swatch--cover-${theme}`} data-description={desc}></label>
+      <input onChange={(e) => handleCover(e, coverVal)} type="radio" name="cover" id={id} checked={isChecked} />
+      <label for={id} className={className} data-description={desc}></label>
     </div>
   )
 };
