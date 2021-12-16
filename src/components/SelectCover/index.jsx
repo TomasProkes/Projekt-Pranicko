@@ -1,23 +1,23 @@
 import React from 'react';
+import SelectColor from '../SelectColor';
 import SelectCoverOption from '../SelectCoverOption';
 
-const SelectCover = ({handleCover, coverSet, cover}) => {
-  const desc_gifts = 'dárečky'
-  const desc_decorations = 'ozdoby'
-  const desc_snowflakes = 'vločky'
-  const desc_trees = 'stromečky'
+const SelectCover = ({handleCover, coverSet, selection}) => {
   
   return (
     <div className="field">
       <label className="field__label">Obrázek na obálce</label>
 
       <div className="field__swatch-group field__swatch-group--big">
+        {
+          coverSet.map(cover => {
+            const className = `swatch--cover-${cover.value}`
+            const id = `cover-${cover.value}`
+            const isChecked = cover.value === selection
+            return <SelectCoverOption handleCover={handleCover} desc={cover.description} className={className} id={id} isChecked={isChecked} coverVal={cover.value} />
 
-        <SelectCoverOption theme='gifts' desc={desc_gifts} is_checked={true} />
-        <SelectCoverOption theme='decorations' desc={desc_decorations} />
-        <SelectCoverOption theme='snowflakes' desc={desc_snowflakes} />
-        <SelectCoverOption theme='trees' desc={desc_trees} />
-
+          })
+        }
       </div>
 
     </div>
