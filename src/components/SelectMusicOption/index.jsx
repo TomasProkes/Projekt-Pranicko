@@ -4,7 +4,7 @@ const SelectMusicOption = ({handleMusic, desc, id, className, isChecked, musicVa
   return (
     <div className="field__radio">
       <input onChange={(e) => handleMusic(e, musicVal)} type="radio" name="music" id={id} checked={isChecked} />
-      <label for={id}>{desc}</label>
+      <label htmlFor={id}>{desc}</label>
     </div>
   )
 };

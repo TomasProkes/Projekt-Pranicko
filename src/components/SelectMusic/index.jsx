@@ -16,7 +16,7 @@ const SelectMusic = ({handleMusic, musicSet, selection}) => {
             const className = `radio--music`
             const id = `music-${music.value}`
             const isChecked = music.value === selection
-            return <SelectMusicOption handleMusic={handleMusic} desc={music.description} className={className} id={id} isChecked={isChecked} musicVal={music.value} />
+            return <SelectMusicOption key={id} handleMusic={handleMusic} desc={music.description} className={className} id={id} isChecked={isChecked} musicVal={music.value} />
           })
 
         }

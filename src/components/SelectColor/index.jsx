@@ -11,7 +11,7 @@ const SelectColor = ({handleColor, colorSet, selection}) => (
           const className = `swatch--${color.value}`
           const id = `color-${color.value}`
           const isChecked = color.value === selection
-          return <SelectColorOption handleColor={handleColor} desc={color.description} className={className} id={id} isChecked={isChecked} colorVal={color.value} />
+          return <SelectColorOption key={id} handleColor={handleColor} desc={color.description} className={className} id={id} isChecked={isChecked} colorVal={color.value} />
         })
       }
     </div>

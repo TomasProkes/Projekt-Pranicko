@@ -11,7 +11,7 @@ const SelectBackground = ({handleBackground, backgroundSet, selection}) => (
           const className = `swatch--${background.value}`
           const id = `background-${background.value}`
           const isChecked = background.value === selection
-          return <SelectBackgroundOption handleBackground={handleBackground} desc={background.description} className={className} id={id} isChecked={isChecked} backgroundVal={background.value} />
+          return <SelectBackgroundOption key={id} handleBackground={handleBackground} desc={background.description} className={className} id={id} isChecked={isChecked} backgroundVal={background.value} />
         })
       }
     </div>
