@@ -11,7 +11,7 @@ const SelectCover = ({handleCover, coverSet, selection}) => (
           const className = `swatch--cover-${cover.value}`
           const id = `cover-${cover.value}`
           const isChecked = cover.value === selection
-          return <SelectCoverOption handleCover={handleCover} desc={cover.description} className={className} id={id} isChecked={isChecked} coverVal={cover.value} />
+          return <SelectCoverOption key={id} handleCover={handleCover} desc={cover.description} className={className} id={id} isChecked={isChecked} coverVal={cover.value} />
 
         })
       }

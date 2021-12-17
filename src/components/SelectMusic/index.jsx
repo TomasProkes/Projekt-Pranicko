@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectMusicOption from '../SelectMusicOption';
 
-const SelectMusic = ({handleMusic, musicSet, music}) => {
+const SelectMusic = ({handleMusic, musicSet, selection}) => {
   const desc_jingle_bells = 'Rolničky, rolničky'
   const desc_silent_night = 'Tichá noc'
   const desc_god_rest = 'Pokoj Vám'
@@ -11,10 +11,15 @@ const SelectMusic = ({handleMusic, musicSet, music}) => {
       <label className="field__label">Hudba</label>
 
       <div className="field__radio-group">
-        <SelectMusicOption theme='jingle-bells' desc={desc_jingle_bells} is_checked={true} />
-        <SelectMusicOption theme='silent-night' desc={desc_silent_night} />
-        <SelectMusicOption theme='god-rest' desc={desc_god_rest} />
+        {
+          musicSet.map(music => {
+            const className = `radio--music`
+            const id = `music-${music.value}`
+            const isChecked = music.value === selection
+            return <SelectMusicOption key={id} handleMusic={handleMusic} desc={music.description} className={className} id={id} isChecked={isChecked} musicVal={music.value} />
+          })
 
+        }
       </div>
     </div>
   )

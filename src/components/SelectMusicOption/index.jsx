@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SelectMusicOption = ({theme, desc, is_checked}) => {
+const SelectMusicOption = ({handleMusic, desc, id, className, isChecked, musicVal}) => {
   return (
     <div className="field__radio">
-      <input type="radio" name="music" id={`music-${theme}`} checked={is_checked} />
-      <label for={`music-${theme}`}>{desc}</label>
+      <input onChange={(e) => handleMusic(e, musicVal)} type="radio" name="music" id={id} checked={isChecked} />
+      <label htmlFor={id}>{desc}</label>
     </div>
   )
 };
