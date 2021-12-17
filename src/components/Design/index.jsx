@@ -63,7 +63,7 @@ const Design = () => {
     console.log('coverVal : ' + coverVal)  // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
 
-    setColor(cover => coverVal)
+    setCover(cover => coverVal)
     console.log('cover : ')  // TODO remove after debug
     console.log(cover)  // TODO remove after debug
     console.log('cardData : ')  // TODO remove after debug
@@ -79,7 +79,7 @@ const Design = () => {
     console.log('snowVal : ' + snowVal)  // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
 
-    setColor(snow => snowVal)
+    setSnow(snow => snowVal)
     console.log('snow : ')  // TODO remove after debug
     console.log(snow)  // TODO remove after debug
     console.log('cardData : ')  // TODO remove after debug
@@ -95,7 +95,7 @@ const Design = () => {
     console.log('musicVal : ' + musicVal)  // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
 
-    setColor(music => musicVal)
+    setMusic(music => musicVal)
     console.log('music : ')  // TODO remove after debug
     console.log(music)  // TODO remove after debug
     console.log('cardData : ')  // TODO remove after debug
