@@ -13,6 +13,7 @@ import configuration from '../../configuration';
 
 const Design = () => {
   const title='Vytvořit přáníčko';
+  const maxTextLength = 100;
 
   const [background, setBackground] = useState('');
   const [color, setColor] = useState('');
@@ -20,6 +21,7 @@ const Design = () => {
   const [snow, setSnow] = useState('');
   const [music, setMusic] = useState('');
   const [text, setText] = useState('');
+  const [textLength, setTextLength] = useState(0);
   const [sender, setSender] = useState('');
   const [cardData, setCardData] = useState({});  // empty object TODO remove
 
@@ -102,14 +104,24 @@ const Design = () => {
     console.log(cardData)  // TODO remove after debug
     console.log('---------------------------------')
   }
-  const handleText = (e) => {
-    console.log(e.target.value)
-    setText(e.target.value)
+
+  const handleText = (e, textVal, maxTextLength) => {
+    console.log('-------------- text -------------')
+    console.log('e.target.value : ' + e.target.value)
+    if (length(textVal) > maxTextLength) {
+      setText(text => textVal)
+      setTextLength(textLength => length(textVal))
+    } else {
+      console.log('Byla dosazena maximalni delka zpravy!!')
+    }
+    console.log('text : ' + text)
   }
+
   const handleSender = (e) => {
     console.log(e.target.value)
     setSender(e.target.value)
   }
+
   const handleSubmitBtn = (e) => {
     console.log(e.target.value)
   }
