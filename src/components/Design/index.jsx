@@ -153,7 +153,7 @@ const Design = () => {
               <SelectMusic handleMusic={handleMusic} musicSet={configuration.music} selection={music} />
 
               {/* <!-- text	--> */}
-              <EnterText handleText={handleText} text={text}/>
+              <EnterText handleText={handleText} text={text} textLength={textLength} maxTextLength={maxTextLength}/>
 
               {/* <!-- odesílatel	--> */}
               <EnterSender handleSender={handleSender} sender={sender} />
