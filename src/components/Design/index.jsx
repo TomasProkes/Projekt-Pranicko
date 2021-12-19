@@ -105,14 +105,19 @@ const Design = () => {
     console.log('---------------------------------')
   }
 
-  const handleText = (e, textVal, maxTextLength) => {
+  const handleText = (e) => {
+    const textVal = e.target.value
     console.log('-------------- text -------------')
-    console.log('e.target.value : ' + e.target.value)
-    if (length(textVal) > maxTextLength) {
+    console.log('e.target.value : ' + textVal)
+    console.log('textVal.length : ' + textVal.length)
+    console.log('maxTextLength : ' + maxTextLength)
+    if (textVal.length <= maxTextLength) {
+      const newData = {text: textVal}
+      setCardData({...cardData, ...newData})  // TODO move to Submit btn handler  ???
       setText(text => textVal)
-      setTextLength(textLength => length(textVal))
+      setTextLength(textLength => textVal.length)
     } else {
-      console.log('Byla dosazena maximalni delka zpravy!!')
+      console.log('Byla dosažena maximální délka zprávy!!')
     }
     console.log('text : ' + text)
   }

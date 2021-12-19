@@ -1,14 +1,19 @@
 import React from 'react';
+import TextArea from '../TextArea';
+import TextCharCounter from '../TextCharCounter';
 
-const EnterText = ({handleText, text}) => {
-  
+const EnterText = ({handleText, text, textLength, maxTextLength}) => {
+  console.log('-- Inside EnterText --');
+  console.log('textLength : ' + textLength);
+  console.log('maxTextLength : ' + maxTextLength);
+
   return (
-    <div className="field">
-      <label className="field__label" htmlFor="text">Text uvnitř přáníčka</label>
-      <textarea className="field__input" name="text" id="text" rows="3" maxLength="100" autoComplete="off"></textarea>
-      <p className="field__description">Zbývá <strong>37</strong>/100 znaků.</p>
-    </div>
-  )
-};
+  <div className="field">
+    <TextArea handleText={handleText} text={text} />
+    {
+      textLength && maxTextLength && <TextCharCounter textLength={textLength} maxTextLength={maxTextLength} />
+    }
+  </div>
+)};
 
 export default EnterText;

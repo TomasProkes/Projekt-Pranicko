@@ -25,7 +25,6 @@ const App = () => (
         <Route path="/card/:id" element={ <DisplayCard /> } />
       </Routes>
     </BrowserRouter>
-    <p>Všechno (asi) funguje.</p>
   </>
 );
 
