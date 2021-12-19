@@ -13,6 +13,7 @@ import configuration from '../../configuration';
 
 const Design = () => {
   const title='Vytvořit přáníčko';
+  const maxTextLength = 100;
 
   const [background, setBackground] = useState('');
   const [color, setColor] = useState('');
@@ -20,6 +21,7 @@ const Design = () => {
   const [snow, setSnow] = useState('');
   const [music, setMusic] = useState('');
   const [text, setText] = useState('');
+  const [textLength, setTextLength] = useState(0);
   const [sender, setSender] = useState('');
   const [cardData, setCardData] = useState({});  // empty object TODO remove
 
@@ -102,14 +104,29 @@ const Design = () => {
     console.log(cardData)  // TODO remove after debug
     console.log('---------------------------------')
   }
+
   const handleText = (e) => {
-    console.log(e.target.value)
-    setText(e.target.value)
+    const textVal = e.target.value
+    console.log('-------------- text -------------')
+    console.log('e.target.value : ' + textVal)
+    console.log('textVal.length : ' + textVal.length)
+    console.log('maxTextLength : ' + maxTextLength)
+    if (textVal.length <= maxTextLength) {
+      const newData = {text: textVal}
+      setCardData({...cardData, ...newData})  // TODO move to Submit btn handler  ???
+      setText(text => textVal)
+      setTextLength(textLength => textVal.length)
+    } else {
+      console.log('Byla dosažena maximální délka zprávy!!')
+    }
+    console.log('text : ' + text)
   }
+
   const handleSender = (e) => {
     console.log(e.target.value)
     setSender(e.target.value)
   }
+
   const handleSubmitBtn = (e) => {
     console.log(e.target.value)
   }
@@ -141,7 +158,7 @@ const Design = () => {
               <SelectMusic handleMusic={handleMusic} musicSet={configuration.music} selection={music} />
 
               {/* <!-- text	--> */}
-              <EnterText handleText={handleText} text={text}/>
+              <EnterText handleText={handleText} text={text} textLength={textLength} maxTextLength={maxTextLength}/>
 
               {/* <!-- odesílatel	--> */}
               <EnterSender handleSender={handleSender} sender={sender} />
