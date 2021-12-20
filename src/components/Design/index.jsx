@@ -23,7 +23,7 @@ const Design = () => {
   const [text, setText] = useState('');
   const [textLength, setTextLength] = useState(0);
   const [sender, setSender] = useState('');
-  const [cardData, setCardData] = useState({});  // empty object TODO remove
+  const [cardData, setCardData] = useState({});
 
   const handleBackground = (e, backgroundVal) => {
     console.log('---------------------------------')
@@ -118,13 +118,25 @@ const Design = () => {
       setTextLength(textLength => textVal.length)
     } else {
       console.log('Byla dosažena maximální délka zprávy!!')
+      // TODO add validation warning msg
     }
     console.log('text : ' + text)
   }
 
   const handleSender = (e) => {
+    const senderVal = e.target.value
+    console.log('-------------- text -------------')
+    console.log('senderVal (e.target.value) : ' + senderVal)
     console.log(e.target.value)
-    setSender(e.target.value)
+
+    const newData = {sender: senderVal}
+    setCardData(...cardData, ...newData)
+    setSender(sender => senderVal)
+    console.log('sender : ')  // TODO remove after debug
+    console.log(sender)  // TODO remove after debug
+    console.log('cardData : ')  // TODO remove after debug
+    console.log(cardData)  // TODO remove after debug
+    console.log('---------------------------------')
   }
 
   const handleSubmitBtn = (e) => {
