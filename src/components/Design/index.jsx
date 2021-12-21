@@ -23,12 +23,12 @@ const Design = () => {
   const [text, setText] = useState('');
   const [textLength, setTextLength] = useState(0);
   const [sender, setSender] = useState('');
-  const [cardData, setCardData] = useState({});  // empty object TODO remove
+  const [cardData, setCardData] = useState({});
 
   const handleBackground = (e, backgroundVal) => {
     console.log('---------------------------------')
     const newData = {background: backgroundVal}
-    setCardData({...cardData, ...newData})  // TODO move to Submit btn handler
+    setCardData({...cardData, ...newData})
 
     console.log('backgroundVal : ' + backgroundVal) // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
@@ -44,7 +44,7 @@ const Design = () => {
   const handleColor = (e, colorVal) => {
     console.log('---------------------------------')
     const newData = {color: colorVal}
-    setCardData({...cardData, ...newData})  // TODO move to Submit btn handler  ???
+    setCardData({...cardData, ...newData})
 
     console.log('colorVal : ' + colorVal)  // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
@@ -60,7 +60,7 @@ const Design = () => {
   const handleCover = (e, coverVal) => {
     console.log('---------------------------------')
     const newData = {cover: coverVal}
-    setCardData({...cardData, ...newData})  // TODO move to Submit btn handler  ???
+    setCardData({...cardData, ...newData})
 
     console.log('coverVal : ' + coverVal)  // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
@@ -76,7 +76,7 @@ const Design = () => {
   const handleSnow = (e, snowVal) => {
     console.log('---------------------------------')
     const newData = {snow: snowVal}
-    setCardData({...cardData, ...newData})  // TODO move to Submit btn handler  ???
+    setCardData({...cardData, ...newData})
 
     console.log('snowVal : ' + snowVal)  // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
@@ -92,7 +92,7 @@ const Design = () => {
   const handleMusic = (e, musicVal) => {
     console.log('---------------------------------')
     const newData = {music: musicVal}
-    setCardData({...cardData, ...newData})  // TODO move to Submit btn handler  ???
+    setCardData({...cardData, ...newData})
 
     console.log('musicVal : ' + musicVal)  // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
@@ -113,18 +113,31 @@ const Design = () => {
     console.log('maxTextLength : ' + maxTextLength)
     if (textVal.length <= maxTextLength) {
       const newData = {text: textVal}
-      setCardData({...cardData, ...newData})  // TODO move to Submit btn handler  ???
+      setCardData({...cardData, ...newData})
       setText(text => textVal)
       setTextLength(textLength => textVal.length)
     } else {
       console.log('Byla dosažena maximální délka zprávy!!')
+      // TODO add validation warning msg
     }
     console.log('text : ' + text)
   }
 
   const handleSender = (e) => {
+    const senderVal = e.target.value
+    console.log('-------------- text -------------')
+    console.log('senderVal (e.target.value) : ')
+    console.log(senderVal)
     console.log(e.target.value)
-    setSender(e.target.value)
+
+    const newData = {sender: senderVal}
+    setCardData({...cardData, ...newData})
+    setSender(sender => senderVal)
+    console.log('sender : ')  // TODO remove after debug
+    console.log(sender)  // TODO remove after debug
+    console.log('cardData : ')  // TODO remove after debug
+    console.log(cardData)  // TODO remove after debug
+    console.log('---------------------------------')
   }
 
   const handleSubmitBtn = (e) => {
