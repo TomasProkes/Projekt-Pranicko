@@ -10,7 +10,7 @@ import Design from '../Design';
 import CardReady from '../CardReady';
 import Collect from '../Collect';
 
-
+//  TODO rename  CreateCard => ManageCard
 const CreateCard = () => {
     const [cardId, setCardId] = useState('');
     const navigate = useNavigate();

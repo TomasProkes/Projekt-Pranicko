@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Header from '../Header';
 
@@ -6,25 +7,42 @@ import Header from '../Header';
 const Collect = () => {
   const title = 'Vyzvednout přáníčko';
   const labelText = 'Zadej šestimístný kód přáníčka';
+  const [pickupId, setPickupId] = useState('');
+  const navigate = useNavigate();
+
+  const handleInputChange = (e) => {
+    setPickupId(pickupId => e.target.value)
+  }
+
+  const handleCollectBtn = (e) => {
+    e.preventDefault();
+    
+    if (pickupId.length === 6) {
+      navigate(`/card/${pickupId}`)
+    } else {
+      console.log(pickupId)
+      // TODO add info msg about insufficient card id length
+    }
+  }
 
   return (
     <>
     	<Header title={title} />
 
-      <main class="content">
+      <main className="content">
 
-        <form class="pickup" autocomplete="off">
-          <label for="pickup-code" class="pickup__label">{labelText}</label>
+        <form className="pickup" autoComplete="off">
+          <label htmlFor="pickup-code" className="pickup__label">{labelText}</label>
 
-          <div class="box shadow mb-30">
-            <div class="box__inside pt-0 pb-0">
+          <div className="box shadow mb-30">
+            <div className="box__inside pt-0 pb-0">
 
-              <input id="pickup-code" class="pickup__code" type="text" maxlength="6" autocomplete="off" />
+              <input onChange={handleInputChange} id="pickup-code" className="pickup__code" type="text" maxLength="6" autoComplete="off" value={pickupId}/>
 
             </div>
           </div>
 
-          <button class="button button--big">{title}</button>
+          <button onClick={handleCollectBtn} className="button button--big">{title}</button>
 
         </form>
 
