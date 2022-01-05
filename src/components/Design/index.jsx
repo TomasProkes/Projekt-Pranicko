@@ -8,6 +8,7 @@ import SelectColor from '../SelectColor';
 import SelectCover from '../SelectCover';
 import SelectMusic from '../SelectMusic';
 import SelectSnow from '../SelectSnow';
+// TODO REMOVE not needed
 import SendCard from '../SendCard';
 
 import configuration from '../../configuration';
@@ -29,51 +30,21 @@ const Design = ({setCardId, apiBaseUrl}) => {
   const navigate = useNavigate();
 
   const handleBackground = (e, backgroundVal) => {
-    console.log('---------------------------------')
     const newData = {background: backgroundVal}
     setCardData({...cardData, ...newData})
-
-    console.log('backgroundVal : ' + backgroundVal) // TODO remove after debug
-    console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
-
     setBackground(background => backgroundVal)
-    console.log('background : ')  // TODO remove after debug
-    console.log(background)  // TODO remove after debug
-    console.log('cardData : ')  // TODO remove after debug
-    console.log(cardData)  // TODO remove after debug
-    console.log('---------------------------------')
   }
 
   const handleColor = (e, colorVal) => {
-    console.log('---------------------------------')
     const newData = {color: colorVal}
     setCardData({...cardData, ...newData})
-
-    console.log('colorVal : ' + colorVal)  // TODO remove after debug
-    console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
-
     setColor(color => colorVal)
-    console.log('color : ')  // TODO remove after debug
-    console.log(color)  // TODO remove after debug
-    console.log('cardData : ')  // TODO remove after debug
-    console.log(cardData)  // TODO remove after debug
-    console.log('---------------------------------')
   }
 
   const handleCover = (e, coverVal) => {
-    console.log('---------------------------------')
     const newData = {cover: coverVal}
     setCardData({...cardData, ...newData})
-
-    console.log('coverVal : ' + coverVal)  // TODO remove after debug
-    console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
-
     setCover(cover => coverVal)
-    console.log('cover : ')  // TODO remove after debug
-    console.log(cover)  // TODO remove after debug
-    console.log('cardData : ')  // TODO remove after debug
-    console.log(cardData)  // TODO remove after debug
-    console.log('---------------------------------')
   }
 
   const handleSnow = (e, snowVal) => {
@@ -110,10 +81,6 @@ const Design = ({setCardId, apiBaseUrl}) => {
 
   const handleText = (e) => {
     const textVal = e.target.value
-    console.log('-------------- text -------------')
-    console.log('e.target.value : ' + textVal)
-    console.log('textVal.length : ' + textVal.length)
-    console.log('maxTextLength : ' + maxTextLength)
     if (textVal.length <= maxTextLength) {
       const newData = {text: textVal}
       setCardData({...cardData, ...newData})
@@ -128,11 +95,6 @@ const Design = ({setCardId, apiBaseUrl}) => {
 
   const handleSender = (e) => {
     const senderVal = e.target.value
-    console.log('-------------- text -------------')
-    console.log('senderVal (e.target.value) : ')
-    console.log(senderVal)
-    console.log(e.target.value)
-
     const newData = {sender: senderVal}
     setCardData({...cardData, ...newData})
     setSender(sender => senderVal)
