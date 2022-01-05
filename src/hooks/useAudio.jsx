@@ -20,6 +20,7 @@ export const useAudio = (url) => {
 			audio.addEventListener('ended', pause );
 
 			return () => {
+				audio.pause()
 				audio.removeEventListener('ended', pause)
 			}
 		},
