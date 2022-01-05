@@ -151,7 +151,7 @@ const Design = ({setCardId, apiBaseUrl}) => {
     console.log('... po prevodu na String :')
     console.log(JSON.stringify( {...cardData} ))
 
-    fetch({apiBaseUrl}, {
+    fetch(`${apiBaseUrl}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
