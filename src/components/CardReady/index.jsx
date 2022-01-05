@@ -3,7 +3,7 @@ import Header from '../Header';
 
 const CardReady = ({cardId, createNewCard}) => {
   const title = 'Přáníčko je připravené'
-  const baseUrl = 'https://vanocni-prani.netlify.app/card/'   // TODO replace with the correct one!!
+  const baseUrl = 'https://online-card-maker.netlify.app/card'
 
   return (
     <>
