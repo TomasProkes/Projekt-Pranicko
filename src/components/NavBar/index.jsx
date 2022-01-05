@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
-   return (
+  const getClass = ({isActive}) => isActive ? "menu__link menu__link--active" : "menu__link"
+  return (
     <nav className="menu">
-      <Link className="menu__link menu__link--active" to="/">Úvod</Link>
-      <Link className="menu__link" to="/design">Vytvořit přáníčko</Link>
-      <Link className="menu__link" to="/collect">Vyzvednout</Link>
+      <NavLink className={getClass} to="/">Úvod</NavLink>
+      <NavLink className={getClass} to="/design">Vytvořit přáníčko</NavLink>
+      <NavLink className={getClass} to="/collect">Vyzvednout</NavLink>
     </nav>
-   )
+  )
 };
 
 export default NavBar;
