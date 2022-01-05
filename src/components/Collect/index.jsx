@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import Header from '../Header';
 
 //  TODO :  Collect ->  CardPickup
 const Collect = () => {
-  const title = 'Vyzvednout přáníčko';
-  const labelText = 'Zadej šestimístný kód přáníčka';
-  const [pickupId, setPickupId] = useState('');
-  const navigate = useNavigate();
+  const title = 'Vyzvednout přáníčko'
+  const labelText = 'Zadej šestimístný kód přáníčka'
+  const [pickupId, setPickupId] = useState('')
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setPickupId(pickupId => e.target.value)
   }
 
   const handleCollectBtn = (e) => {
-    e.preventDefault();
-    
+    e.preventDefault()
+
     if (pickupId.length === 6) {
       navigate(`/card/${pickupId}`)
     } else {
       console.log(pickupId)
-      // TODO add info msg about insufficient card id length
+      // TODO add validation msg about insufficient card id length
     }
   }
 
@@ -49,6 +48,6 @@ const Collect = () => {
       </main>
     </>
   )   
-};
+}
 
-export default Collect;
+export default Collect
