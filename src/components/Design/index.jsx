@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import EnterSender from '../EnterSender';
 import EnterText from '../EnterText';
 import Header from '../Header';
@@ -11,7 +12,8 @@ import SendCard from '../SendCard';
 
 import configuration from '../../configuration';
 
-const Design = () => {
+//  TODO :  Design -> CardDesign
+const Design = ({setCardId}) => {
   const title='Vytvořit přáníčko';
   const maxTextLength = 100;
 
@@ -24,6 +26,7 @@ const Design = () => {
   const [textLength, setTextLength] = useState(0);
   const [sender, setSender] = useState('');
   const [cardData, setCardData] = useState({});
+  const navigate = useNavigate();
 
   const handleBackground = (e, backgroundVal) => {
     console.log('---------------------------------')
@@ -140,8 +143,48 @@ const Design = () => {
     console.log('---------------------------------')
   }
 
+  // TODO helper sleep function for pausing the app for debugging -- remove after all works fine !
+  const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
   const handleSubmitBtn = (e) => {
+    e.preventDefault()
     console.log(e.target.value)
+    console.log('Na server posilam tato data:')
+    console.log(cardData)
+    console.log('... po prevodu na String :')
+    console.log(JSON.stringify( {...cardData} ))
+
+    fetch('https://xmas-api.itgirls.cz/cards', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify( {...cardData} )
+    })
+    .then(response => response.json())
+    .then(data => {
+      // v proměnné data mám odpověď ze serveru
+      // a mohu si s ní dělat, co potřebuji
+      if (!data.success) {
+        console.log(data.errors)
+        // TODO highlight the unfilled fields in the form
+        sleep(2000)
+
+      } else {
+        console.log('Response data:')
+        console.log(data);
+        console.log('Card ID:')
+        console.log(data.data.id);
+        sleep(2000)
+        setCardId(data.data.id)
+        console.log('Redirecting to the page showing the ready card')
+        sleep(2000)
+        navigate('/ready')
+
+      }
+    })
   }
 
   return (
@@ -153,7 +196,7 @@ const Design = () => {
         <div className="box">
           <div className="box__inside">
 
-            <form className="configurator">
+            <form onSubmit={handleSubmitBtn} className="configurator">
 
               {/* <!-- pozadí stránky	--> */}
               <SelectBackground handleBackground={handleBackground} backgroundSet={configuration.backgrounds} selection={background} />
@@ -177,7 +220,8 @@ const Design = () => {
               <EnterSender handleSender={handleSender} sender={sender} />
 
               {/* <!-- tlačítko pro odeslání --> */}
-              <SendCard handleSubmitBtn={handleSubmitBtn} cardData={cardData} />
+              {/* <SendCard  cardData={cardData} /> */}
+              <button type="submit" className="button button--big mt-30">Uložit přáníčko</button>
 
             </form>
 
