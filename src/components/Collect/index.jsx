@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from '../Header';
 
+//  TODO :  Collect ->  CardPickup
 const Collect = () => {
   const title = 'Vyzvednout přáníčko';
   const labelText = 'Zadej šestimístný kód přáníčka';
