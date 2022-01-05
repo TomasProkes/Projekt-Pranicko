@@ -13,7 +13,7 @@ import SendCard from '../SendCard';
 import configuration from '../../configuration';
 
 //  TODO :  Design -> CardDesign
-const Design = ({setCardId}) => {
+const Design = ({setCardId, apiBaseUrl}) => {
   const title='Vytvořit přáníčko';
   const maxTextLength = 100;
 
@@ -143,11 +143,6 @@ const Design = ({setCardId}) => {
     console.log('---------------------------------')
   }
 
-  // TODO helper sleep function for pausing the app for debugging -- remove after all works fine !
-  const sleep = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   const handleSubmitBtn = (e) => {
     e.preventDefault()
     console.log(e.target.value)
@@ -156,7 +151,7 @@ const Design = ({setCardId}) => {
     console.log('... po prevodu na String :')
     console.log(JSON.stringify( {...cardData} ))
 
-    fetch('https://xmas-api.itgirls.cz/cards', {
+    fetch(`${apiBaseUrl}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -167,21 +162,18 @@ const Design = ({setCardId}) => {
     .then(data => {
       // v proměnné data mám odpověď ze serveru
       // a mohu si s ní dělat, co potřebuji
-      if (!data.success) {
-        console.log(data.errors)
-        // TODO highlight the unfilled fields in the form
-        sleep(2000)
-
-      } else {
+      if (data.success) {
         console.log('Response data:')
         console.log(data);
         console.log('Card ID:')
         console.log(data.data.id);
-        sleep(2000)
         setCardId(data.data.id)
         console.log('Redirecting to the page showing the ready card')
-        sleep(2000)
         navigate('/ready')
+        
+      } else {
+        console.log(data.errors)
+        // TODO highlight the unfilled fields in the form
 
       }
     })
