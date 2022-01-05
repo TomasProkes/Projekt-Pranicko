@@ -10,15 +10,15 @@ import Design from '../Design';
 import CardReady from '../CardReady';
 import Collect from '../Collect';
 
-
-const CreateCard = () => {
-    const [cardId, setCardId] = useState('');
-    const navigate = useNavigate();
+//  TODO rename  CreateCard => ManageCard
+const CreateCard = ({apiBaseUrl}) => {
+    const [cardId, setCardId] = useState('')
+    const navigate = useNavigate()
 
     const createNewCard = () => {
         setCardId(cardId => '')
         navigate('/design')
-    };
+    }
 
     return (
         <>
@@ -26,7 +26,7 @@ const CreateCard = () => {
 
             <Routes>
                 <Route path="/" element={<Intro />} />
-                <Route path="/design" element={<Design setCardId={setCardId} />} />
+                <Route path="/design" element={<Design setCardId={setCardId} apiBaseUrl={apiBaseUrl} />} />
                 <Route path="/ready" element={<CardReady cardId={cardId} createNewCard={createNewCard} />} />
                 <Route path="/collect" element={<Collect />} />
             </Routes>
