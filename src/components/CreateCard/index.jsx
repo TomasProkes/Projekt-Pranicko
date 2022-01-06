@@ -9,6 +9,7 @@ import Intro from '../Intro';
 import Design from '../Design';
 import CardReady from '../CardReady';
 import Collect from '../Collect';
+import NoCardFound from '../NoCardFound';
 
 //  TODO rename  CreateCard => ManageCard
 const CreateCard = ({apiBaseUrl}) => {
