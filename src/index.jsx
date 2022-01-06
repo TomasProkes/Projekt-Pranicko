@@ -18,8 +18,9 @@ const App = () => {
       }
       <BrowserRouter>
         <Routes>
-          <Route path="*" element={ <CreateCard apiBaseUrl={apiBaseUrl}/>} />
+          <Route path="/" element={ <CreateCard apiBaseUrl={apiBaseUrl}/>} />
           <Route path="/card/:id" element={ <DisplayCard apiBaseUrl={apiBaseUrl} /> } />
+          <Route path="*" element={ <h1>No element found!!!</h1> } />
         </Routes>
       </BrowserRouter>
     </>

@@ -4,8 +4,11 @@ import Card from '../Card';
 
 const DisplayCard = ({apiBaseUrl}) => {
   const { id } = useParams()
-  const [cardData, setCardData] = useState(null)
+  console.log('api base url : ' + apiBaseUrl)
+  console.log('ID : ' + id)
+  const [cardData, setCardData] = useState({})
 
+  console.log('Fetching data now....')
   useEffect(() => {
     fetch(`${apiBaseUrl}/${id}`)
     .then((response) => response.json())
@@ -13,13 +16,19 @@ const DisplayCard = ({apiBaseUrl}) => {
       if (data.success) {
         setCardData(data.data)
       } else {
-        console.log('Neplatny kod')
+        console.log('Neplatny kod!!')
         // redirect to NoCardFound
       }
     })
   }, []);
 
-  return cardData && <Card cardData={cardData} />
+  return (
+    <>
+      {
+        cardData.cover && cardData.snow && cardData.music && <Card cardData={cardData} />
+      }
+    </>
+  ) 
 
 }
 
