@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Card from '../Card';
 
 const DisplayCard = ({apiBaseUrl}) => {
@@ -7,6 +7,7 @@ const DisplayCard = ({apiBaseUrl}) => {
   console.log('api base url : ' + apiBaseUrl)
   console.log('ID : ' + id)
   const [cardData, setCardData] = useState({})
+  const navigate = useNavigate()
 
   console.log('Fetching data now....')
   useEffect(() => {
