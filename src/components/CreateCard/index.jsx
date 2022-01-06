@@ -29,6 +29,7 @@ const CreateCard = ({apiBaseUrl}) => {
                 <Route path="/design" element={<Design setCardId={setCardId} apiBaseUrl={apiBaseUrl} />} />
                 <Route path="/ready" element={<CardReady cardId={cardId} createNewCard={createNewCard} />} />
                 <Route path="/collect" element={<Collect />} />
+                <Route path="/notfound" element={<NoCardFound />} />
             </Routes>
 
         </>
