@@ -23,7 +23,9 @@ const Design = ({setCardId, apiBaseUrl}) => {
   const [color, setColor] = useState('');
   const [colorError, setColorError] = useState(false);
   const [cover, setCover] = useState('');
+  const [coverError, setCoverError] = useState(false);
   const [snow, setSnow] = useState('');
+  const [snowError, setSnowError] = useState(false);
   const [music, setMusic] = useState('');
   const [text, setText] = useState('');
   const [textLength, setTextLength] = useState(0);
@@ -145,12 +147,18 @@ const Design = ({setCardId, apiBaseUrl}) => {
           // TODO remove after debug
           console.log(error)
           if (error.includes('background')) {
-            console.log('Setting the backgroundError flag to TRUE')
+            console.log('Setting the backgroundError flag to TRUE')  // TODO remove when not needed anymore
             setBackgroundError(backgroundError => true)
           } else if (error.includes('color')) {
-            console.log('Setting the colorError flag to TRUE')
+            console.log('Setting the colorError flag to TRUE')  // TODO remove when not needed anymore
             setColorError(colorError => true)
-
+          } else if (error.includes('cover')) {
+            console.log('Setting the coverError flag to TRUE')  // TODO remove when not needed anymore
+            setCoverError(coverError => true)
+          } else if (error.includes('snow')) {
+            console.log('Setting the snowError flag to TRUE')  // TODO remove when not needed anymore
+            setSnowError(snowError => true)
+            
           }
         }
       }
