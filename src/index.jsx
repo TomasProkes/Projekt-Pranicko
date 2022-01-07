@@ -14,8 +14,6 @@ const App = () => {
   
   return (
     <>
-      {
-      }
       <BrowserRouter>
         <Routes>
           <Route path="*" element={ <CreateCard apiBaseUrl={apiBaseUrl}/>} />
