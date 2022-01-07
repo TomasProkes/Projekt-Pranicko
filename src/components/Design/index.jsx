@@ -27,7 +27,9 @@ const Design = ({setCardId, apiBaseUrl}) => {
   const [snow, setSnow] = useState('');
   const [snowError, setSnowError] = useState(false);
   const [music, setMusic] = useState('');
+  const [musicError, setMusicError] = useState(false);
   const [text, setText] = useState('');
+  const [textError, setTextError] = useState(false);
   const [textLength, setTextLength] = useState(0);
   const [sender, setSender] = useState('');
   const [cardData, setCardData] = useState({});
@@ -48,43 +50,49 @@ const Design = ({setCardId, apiBaseUrl}) => {
     // clear the error flag for this option because a new value has just been specified
     setColorError(colorError => false)
   }
-
+  
   const handleCover = (e, coverVal) => {
     const newData = {cover: coverVal}
     setCardData({...cardData, ...newData})
     setCover(cover => coverVal)
+    // clear the error flag for this option because a new value has just been specified
+    setCoverError(coverError => false)
   }
-
+  
   const handleSnow = (e, snowVal) => {
     console.log('---------------------------------')
     const newData = {snow: snowVal}
     setCardData({...cardData, ...newData})
-
+    
     console.log('snowVal : ' + snowVal)  // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
-
+    
     setSnow(snow => snowVal)
     console.log('snow : ')  // TODO remove after debug
     console.log(snow)  // TODO remove after debug
     console.log('cardData : ')  // TODO remove after debug
     console.log(cardData)  // TODO remove after debug
     console.log('---------------------------------')
+    // clear the error flag for this option because a new value has just been specified
+    setSnowError(snowError => false)
   }
-
+  
   const handleMusic = (e, musicVal) => {
     console.log('---------------------------------')
     const newData = {music: musicVal}
     setCardData({...cardData, ...newData})
-
+    
     console.log('musicVal : ' + musicVal)  // TODO remove after debug
     console.log('e.target.id : ' + e.target.id)  // TODO remove after debug
-
+    
     setMusic(music => musicVal)
     console.log('music : ')  // TODO remove after debug
     console.log(music)  // TODO remove after debug
     console.log('cardData : ')  // TODO remove after debug
     console.log(cardData)  // TODO remove after debug
     console.log('---------------------------------')
+    // clear the error flag for this option because a new value has just been specified
+    setMusic(musicError => false)
   }
 
   const handleText = (e) => {
@@ -158,6 +166,12 @@ const Design = ({setCardId, apiBaseUrl}) => {
           } else if (error.includes('snow')) {
             console.log('Setting the snowError flag to TRUE')  // TODO remove when not needed anymore
             setSnowError(snowError => true)
+          } else if (error.includes('music')) {
+            console.log('Setting the musicError flag to TRUE')  // TODO remove when not needed anymore
+            setMusicError(musicError => true)
+          } else if (error.includes('text')) {
+            console.log('Setting the textError flag to TRUE')  // TODO remove when not needed anymore
+            setTextError(textError => true)
             
           }
         }
