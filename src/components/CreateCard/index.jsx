@@ -24,15 +24,13 @@ const CreateCard = ({apiBaseUrl}) => {
     return (
         <>
             <NavBar />
-
             <Routes>
-                <Route path="/" element={<Intro />} />
+                <Route path="*" element={<Intro />} />
                 <Route path="/design" element={<Design setCardId={setCardId} apiBaseUrl={apiBaseUrl} />} />
                 <Route path="/ready" element={<CardReady cardId={cardId} createNewCard={createNewCard} />} />
                 <Route path="/collect" element={<Collect />} />
                 <Route path="/notfound" element={<NoCardFound />} />
             </Routes>
-
         </>
     )
 }
