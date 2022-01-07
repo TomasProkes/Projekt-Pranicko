@@ -19,7 +19,9 @@ const Design = ({setCardId, apiBaseUrl}) => {
   const maxTextLength = 100;
 
   const [background, setBackground] = useState('');
+  const [backgroundError, setBackgroundError] = useState(false);
   const [color, setColor] = useState('');
+  const [colorError, setColorError] = useState(false);
   const [cover, setCover] = useState('');
   const [snow, setSnow] = useState('');
   const [music, setMusic] = useState('');
@@ -33,12 +35,16 @@ const Design = ({setCardId, apiBaseUrl}) => {
     const newData = {background: backgroundVal}
     setCardData({...cardData, ...newData})
     setBackground(background => backgroundVal)
+    // clear the error flag for this option because a new value has just been specified
+    setBackgroundError(backgroundError => false)
   }
-
+  
   const handleColor = (e, colorVal) => {
     const newData = {color: colorVal}
     setCardData({...cardData, ...newData})
     setColor(color => colorVal)
+    // clear the error flag for this option because a new value has just been specified
+    setColorError(colorError => false)
   }
 
   const handleCover = (e, coverVal) => {
@@ -122,21 +128,31 @@ const Design = ({setCardId, apiBaseUrl}) => {
     })
     .then(response => response.json())
     .then(data => {
-      // v proměnné data mám odpověď ze serveru
-      // a mohu si s ní dělat, co potřebuji
+
       if (data.success) {
         console.log('Response data:')
         console.log(data);
         console.log('Card ID:')
         console.log(data.data.id);
         setCardId(data.data.id)
-        console.log('Redirecting to the page showing the ready card')
         navigate('/ready')
         
       } else {
+        console.log('Validacni chyby vracene ze serveru:')
         console.log(data.errors)
         // TODO highlight the unfilled fields in the form
+        for (let error of data.errors) {
+          // TODO remove after debug
+          console.log(error)
+          if (error.includes('background')) {
+            console.log('Setting the backgroundError flag to TRUE')
+            setBackgroundError(backgroundError => true)
+          } else if (error.includes('color')) {
+            console.log('Setting the colorError flag to TRUE')
+            setColorError(colorError => true)
 
+          }
+        }
       }
     })
   }
