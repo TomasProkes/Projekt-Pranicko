@@ -31,7 +31,9 @@ const Design = ({setCardId, apiBaseUrl}) => {
   const [text, setText] = useState('');
   const [textError, setTextError] = useState(false);
   const [textLength, setTextLength] = useState(0);
+  const [textLengthError, setTextLengthError] = useState(false);
   const [sender, setSender] = useState('');
+  const [senderError, setSenderError] = useState(false);
   const [cardData, setCardData] = useState({});
   const navigate = useNavigate();
 
@@ -92,9 +94,9 @@ const Design = ({setCardId, apiBaseUrl}) => {
     console.log(cardData)  // TODO remove after debug
     console.log('---------------------------------')
     // clear the error flag for this option because a new value has just been specified
-    setMusic(musicError => false)
+    setMusicError(musicError => false)
   }
-
+  
   const handleText = (e) => {
     const textVal = e.target.value
     if (textVal.length <= maxTextLength) {
@@ -102,13 +104,16 @@ const Design = ({setCardId, apiBaseUrl}) => {
       setCardData({...cardData, ...newData})
       setText(text => textVal)
       setTextLength(textLength => textVal.length)
+      // clear the error flag for this option because a new value has just been specified
+      setTextError(textError => false)
+      setTextLengthError(textLengthError => false)
     } else {
       console.log('Byla dosažena maximální délka zprávy!!')
-      // TODO add validation warning msg
+      setTextLengthError(textLengthError => true)
     }
     console.log('text : ' + text)
   }
-
+  
   const handleSender = (e) => {
     const senderVal = e.target.value
     const newData = {sender: senderVal}
@@ -119,6 +124,8 @@ const Design = ({setCardId, apiBaseUrl}) => {
     console.log('cardData : ')  // TODO remove after debug
     console.log(cardData)  // TODO remove after debug
     console.log('---------------------------------')
+    // clear the error flag for this option because a new value has just been specified
+    setSenderError(senderError => false)
   }
 
   const handleSubmitBtn = (e) => {
@@ -172,6 +179,9 @@ const Design = ({setCardId, apiBaseUrl}) => {
           } else if (error.includes('text')) {
             console.log('Setting the textError flag to TRUE')  // TODO remove when not needed anymore
             setTextError(textError => true)
+          } else if (error.includes('sender')) {
+            console.log('Setting the senderError flag to TRUE')  // TODO remove when not needed anymore
+            setSenderError(senderError => true)
             
           }
         }

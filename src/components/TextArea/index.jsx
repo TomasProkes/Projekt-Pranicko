@@ -3,7 +3,8 @@ import React from 'react';
 const TextArea = ({handleText, text}) => (
   <>
     <label className="field__label" htmlFor="text">Text uvnitř přáníčka</label>
-    <textarea onChange={handleText} className="field__input" name="text" id="text" rows="3" maxLength="100" autoComplete="off" value={text}></textarea>
+    {/* change maxLength back to 100 when validation tests are finished */}
+    <textarea onChange={handleText} className="field__input" name="text" id="text" rows="3" maxLength="101" autoComplete="off" value={text}></textarea>
   </>
 );
 
