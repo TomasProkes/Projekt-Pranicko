@@ -9,9 +9,11 @@ const EnterText = ({handleText, text, textLength, maxTextLength}) => {
 
   return (
   <div className="field">
-    <TextArea handleText={handleText} text={text} />
     {
-      textLength && maxTextLength && <TextCharCounter textLength={textLength} maxTextLength={maxTextLength} />
+      maxTextLength && <TextArea handleText={handleText} text={text} maxTextLength={maxTextLength} />
+    }
+    {
+      maxTextLength && <TextCharCounter textLength={textLength} maxTextLength={maxTextLength} />
     }
   </div>
 )};
