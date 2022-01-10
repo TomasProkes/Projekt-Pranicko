@@ -2,13 +2,14 @@ import React from 'react';
 import TextArea from '../TextArea';
 import TextCharCounter from '../TextCharCounter';
 
-const EnterText = ({handleText, text, textLength, maxTextLength}) => {
+const EnterText = ({handleText, text, textLength, maxTextLength, textError, textLengthError}) => {
   console.log('-- Inside EnterText --');
-  console.log('textLength : ' + textLength);
-  console.log('maxTextLength : ' + maxTextLength);
+  console.log('textError : ' + textError);
+  console.log('textLengthError : ' + textLengthError);
+  const isInvalid = textError || textLengthError
 
   return (
-  <div className="field">
+  <div className={isInvalid ? "field field--error" : "field"}>
     {
       maxTextLength && <TextArea handleText={handleText} text={text} maxTextLength={maxTextLength} />
     }

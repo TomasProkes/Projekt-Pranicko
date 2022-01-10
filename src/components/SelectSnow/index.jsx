@@ -1,11 +1,11 @@
 import React from 'react';
 import SelectSnowOption from '../SelectSnowOption';
 
-const SelectSnow = ({handleSnow, snowSet, selection}) => {
+const SelectSnow = ({handleSnow, snowSet, selection, isInvalid}) => {
   const className = `radio--snow`
   
   return (
-    <div className="field">
+    <div className={isInvalid ? "field field--error" : "field"}>
       <label className="field__label ">Sníh na pozadí</label>
 
       <div className="field__radio-group">

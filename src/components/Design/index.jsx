@@ -10,7 +10,7 @@ import SelectMusic from '../SelectMusic';
 import SelectSnow from '../SelectSnow';
 import configuration from '../../configuration';
 
-//  TODO :  Design -> CardDesign
+//  TODO : rename Design -> CardDesign
 const Design = ({setCardId, apiBaseUrl}) => {
   const title='Vytvořit přáníčko';
   const maxTextLength = 100;
@@ -210,7 +210,7 @@ const Design = ({setCardId, apiBaseUrl}) => {
               <SelectMusic handleMusic={handleMusic} musicSet={configuration.music} selection={music} isInvalid={musicError} />
 
               {/* <!-- text	--> */}
-              <EnterText handleText={handleText} text={text} textLength={textLength} maxTextLength={maxTextLength} isInvalid={textError} />
+              <EnterText handleText={handleText} text={text} textLength={textLength} maxTextLength={maxTextLength} textError={textError} textLengthError={textLengthError} />
 
               {/* <!-- odesílatel	--> */}
               <EnterSender handleSender={handleSender} sender={sender} isInvalid={senderError} />
