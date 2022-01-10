@@ -360,6 +360,10 @@ div.pickup__code {
 	color: var(--color-gold);
 }
 
+.field--error {
+	border: 2px solid red;
+}
+
 
 /* input, textarea */
 .field__input {

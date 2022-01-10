@@ -1,8 +1,8 @@
 import React from 'react';
 import SelectCoverOption from '../SelectCoverOption';
 
-const SelectCover = ({handleCover, coverSet, selection}) => (
-  <div className="field">
+const SelectCover = ({handleCover, coverSet, selection, isInvalid}) => (
+  <div className={isInvalid ? "field field--error" : "field"}>
     <label className="field__label">Obrázek na obálce</label>
 
     <div className="field__swatch-group field__swatch-group--big">

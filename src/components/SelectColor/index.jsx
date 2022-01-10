@@ -1,8 +1,8 @@
 import React from 'react';
 import SelectColorOption from '../SelectColorOption';
 
-const SelectColor = ({handleColor, colorSet, selection}) => (
-  <div className="field">
+const SelectColor = ({handleColor, colorSet, selection, isInvalid}) => (
+  <div className={isInvalid ? "field field--error" : "field"}>
     <label className="field__label">Barva přáníčka</label>
 
     <div className="field__swatch-group field__swatch-group--round">
