@@ -35,24 +35,21 @@ const Design = ({setCardId, apiBaseUrl}) => {
   const navigate = useNavigate();
 
   const handleBackground = (e, backgroundVal) => {
-    const newData = {background: backgroundVal}
-    setCardData({...cardData, ...newData})
+    setCardData({...cardData, background: backgroundVal})
     setBackground(background => backgroundVal)
     // clear the error flag for this option because a new value has just been specified
     setBackgroundError(backgroundError => false)
   }
   
   const handleColor = (e, colorVal) => {
-    const newData = {color: colorVal}
-    setCardData({...cardData, ...newData})
+    setCardData({...cardData, color: colorVal})
     setColor(color => colorVal)
     // clear the error flag for this option because a new value has just been specified
     setColorError(colorError => false)
   }
   
   const handleCover = (e, coverVal) => {
-    const newData = {cover: coverVal}
-    setCardData({...cardData, ...newData})
+    setCardData({...cardData, cover: coverVal})
     setCover(cover => coverVal)
     // clear the error flag for this option because a new value has just been specified
     setCoverError(coverError => false)
@@ -127,7 +124,7 @@ const Design = ({setCardId, apiBaseUrl}) => {
 
   const handleSubmitBtn = (e) => {
     e.preventDefault()
-    console.log(e.target.value)
+    console.log(e.target)
     console.log('Na server posilam tato data:')
     console.log(cardData)
     console.log('... po prevodu na String :')
@@ -195,31 +192,31 @@ const Design = ({setCardId, apiBaseUrl}) => {
         <div className="box">
           <div className="box__inside">
 
-            <form onSubmit={handleSubmitBtn} className="configurator">
+            <form className="configurator">
 
               {/* <!-- pozadí stránky	--> */}
-              <SelectBackground handleBackground={handleBackground} backgroundSet={configuration.backgrounds} selection={background} />
+              <SelectBackground handleBackground={handleBackground} backgroundSet={configuration.backgrounds} selection={background} isInvalid={backgroundError} />
 
               {/* <!-- barva přáníčka	--> */}
-              <SelectColor handleColor={handleColor} colorSet={configuration.colors} selection={color} />
+              <SelectColor handleColor={handleColor} colorSet={configuration.colors} selection={color} isInvalid={colorError} />
 
               {/* <!-- obrázek na obálce	--> */}
-              <SelectCover handleCover={handleCover} coverSet={configuration.covers} selection={cover} />
+              <SelectCover handleCover={handleCover} coverSet={configuration.covers} selection={cover} isInvalid={coverError} />
 
               {/* <!-- intenzita sněžení na pozadí	--> */}
-              <SelectSnow handleSnow={handleSnow} snowSet={configuration.snow} selection={snow} />
+              <SelectSnow handleSnow={handleSnow} snowSet={configuration.snow} selection={snow} isInvalid={snowError} />
 
               {/* <!-- hudba	--> */}
-              <SelectMusic handleMusic={handleMusic} musicSet={configuration.music} selection={music} />
+              <SelectMusic handleMusic={handleMusic} musicSet={configuration.music} selection={music} isInvalid={musicError} />
 
               {/* <!-- text	--> */}
-              <EnterText handleText={handleText} text={text} textLength={textLength} maxTextLength={maxTextLength}/>
+              <EnterText handleText={handleText} text={text} textLength={textLength} maxTextLength={maxTextLength} isInvalid={textError} />
 
               {/* <!-- odesílatel	--> */}
-              <EnterSender handleSender={handleSender} sender={sender} />
+              <EnterSender handleSender={handleSender} sender={sender} isInvalid={senderError} />
 
               {/* <!-- tlačítko pro odeslání --> */}
-              <button type="submit" className="button button--big mt-30">Uložit přáníčko</button>
+              <button onClick={handleSubmitBtn} type="submit" className="button button--big mt-30">Uložit přáníčko</button>
 
             </form>
 

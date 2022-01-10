@@ -1,8 +1,8 @@
 import React from 'react';
 import SelectBackgroundOption from '../SelectBackgroundOption';
 
-const SelectBackground = ({handleBackground, backgroundSet, selection}) => (
-  <div className="field">
+const SelectBackground = ({handleBackground, backgroundSet, selection, isInvalid}) => (
+  <div className={isInvalid ? "field field--error" : "field"}>
     <label className="field__label">Pozadí stránky</label>
 
     <div className="field__swatch-group field__swatch-group--round">
