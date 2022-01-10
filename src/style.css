@@ -347,6 +347,7 @@ div.pickup__code {
 
 .field {
 	line-height: 1;
+	padding: 12px;
 }
 .field + .field {
 	margin-top: 40px;
@@ -362,6 +363,13 @@ div.pickup__code {
 
 .field--error {
 	border: 2px solid red;
+	border-radius: 6px;
+	padding: 10px;
+}
+
+.field--error:hover {
+	border-width: 3px;
+	padding: 9px;
 }
 
 

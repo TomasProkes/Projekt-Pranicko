@@ -1,11 +1,11 @@
 import React from 'react';
 import SelectMusicOption from '../SelectMusicOption';
 
-const SelectMusic = ({handleMusic, musicSet, selection}) => {
+const SelectMusic = ({handleMusic, musicSet, selection, isInvalid}) => {
   const className = `radio--music`
   
   return (
-    <div className="field">
+    <div className={isInvalid ? "field field--error" : "field"}>
       <label className="field__label">Hudba</label>
       <div className="field__radio-group">
         {
