@@ -8,9 +8,6 @@ import SelectColor from '../SelectColor';
 import SelectCover from '../SelectCover';
 import SelectMusic from '../SelectMusic';
 import SelectSnow from '../SelectSnow';
-// TODO REMOVE not needed
-import SendCard from '../SendCard';
-
 import configuration from '../../configuration';
 
 //  TODO :  Design -> CardDesign
@@ -222,7 +219,6 @@ const Design = ({setCardId, apiBaseUrl}) => {
               <EnterSender handleSender={handleSender} sender={sender} />
 
               {/* <!-- tlačítko pro odeslání --> */}
-              {/* <SendCard  cardData={cardData} /> */}
               <button type="submit" className="button button--big mt-30">Uložit přáníčko</button>
 
             </form>
