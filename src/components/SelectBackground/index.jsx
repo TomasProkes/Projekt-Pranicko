@@ -7,7 +7,6 @@ const SelectBackground = ({handleBackground, backgroundSet, selection, isInvalid
       isInvalid && <span className="field--error-text">Vyberte prosím barvu pozadí</span>
     }
     <label className="field__label">Pozadí stránky</label>
-
     <div className="field__swatch-group field__swatch-group--round">
       {
         backgroundSet.map(background => {
@@ -18,7 +17,6 @@ const SelectBackground = ({handleBackground, backgroundSet, selection, isInvalid
         })
       }
     </div>
-
   </div>
 );
 

@@ -6,8 +6,10 @@ const SelectSnow = ({handleSnow, snowSet, selection, isInvalid}) => {
   
   return (
     <div className={isInvalid ? "field field--error" : "field"}>
+      {
+        isInvalid && <span className="field--error-text">Vyberte prosím intenzitu sněžení</span>
+      }
       <label className="field__label ">Sníh na pozadí</label>
-
       <div className="field__radio-group">
         {
           snowSet.map(snow => {

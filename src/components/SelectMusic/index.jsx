@@ -6,6 +6,9 @@ const SelectMusic = ({handleMusic, musicSet, selection, isInvalid}) => {
   
   return (
     <div className={isInvalid ? "field field--error" : "field"}>
+      {
+        isInvalid && <span className="field--error-text">Vyberte prosím hudbu přáníčka</span>
+      }
       <label className="field__label">Hudba</label>
       <div className="field__radio-group">
         {
@@ -14,7 +17,6 @@ const SelectMusic = ({handleMusic, musicSet, selection, isInvalid}) => {
             const isChecked = music.value === selection
             return <SelectMusicOption key={id} handleMusic={handleMusic} desc={music.description} className={className} id={id} isChecked={isChecked} musicVal={music.value} />
           })
-
         }
       </div>
     </div>

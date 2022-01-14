@@ -7,7 +7,6 @@ const SelectCover = ({handleCover, coverSet, selection, isInvalid}) => (
       isInvalid && <span className="field--error-text">Vyberte prosím obrázek na obálce</span>
     }
     <label className="field__label">Obrázek na obálce</label>
-
     <div className="field__swatch-group field__swatch-group--big">
       {
         coverSet.map(cover => {
@@ -15,11 +14,9 @@ const SelectCover = ({handleCover, coverSet, selection, isInvalid}) => (
           const id = `cover-${cover.value}`
           const isChecked = cover.value === selection
           return <SelectCoverOption key={id} handleCover={handleCover} desc={cover.description} className={className} id={id} isChecked={isChecked} coverVal={cover.value} />
-
         })
       }
     </div>
-
   </div>
 );
 
