@@ -7,7 +7,6 @@ const SelectColor = ({handleColor, colorSet, selection, isInvalid}) => (
       isInvalid && <span className="field--error-text">Vyberte prosím barvu přáníčka</span>
     }
     <label className="field__label">Barva přáníčka</label>
-
     <div className="field__swatch-group field__swatch-group--round">
       {
         colorSet.map(color => {
@@ -18,7 +17,6 @@ const SelectColor = ({handleColor, colorSet, selection, isInvalid}) => (
         })
       }
     </div>
-
   </div>
 );
 
