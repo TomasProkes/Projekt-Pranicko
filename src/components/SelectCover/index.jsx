@@ -3,6 +3,9 @@ import SelectCoverOption from '../SelectCoverOption';
 
 const SelectCover = ({handleCover, coverSet, selection, isInvalid}) => (
   <div className={isInvalid ? "field field--error" : "field"}>
+    {
+      isInvalid && <span className="field--error-text">Vyberte prosím obrázek na obálce</span>
+    }
     <label className="field__label">Obrázek na obálce</label>
 
     <div className="field__swatch-group field__swatch-group--big">

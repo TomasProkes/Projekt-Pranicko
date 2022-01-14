@@ -14,6 +14,7 @@ html { box-sizing: border-box; }
 
 	--color-red: #a1262a;
 	--color-red-active: #791e21;
+	--color-red-error: #d6343a;
 
 	--color-blue: #1a202b;
 	--color-blue-active: #2a3d5f;
@@ -362,7 +363,8 @@ div.pickup__code {
 }
 
 .field--error {
-	border: 2px solid red;
+	position: relative;
+	border: 2px solid var(--color-red-error);
 	border-radius: 6px;
 	padding: 10px;
 }
@@ -370,6 +372,40 @@ div.pickup__code {
 .field--error:hover {
 	border-width: 3px;
 	padding: 9px;
+}
+
+/* error tooltip with help text */
+.field--error-text {
+	visibility: hidden;
+  width: 160px;
+  background-color: var(--color-red-error);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 105%;
+  left: 50%;
+  margin-left: -80px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.field--error .field--error-text::after {
+	content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--color-red-error) transparent transparent transparent;
+}
+
+.field--error:hover .field--error-text {
+	visibility: visible;
+  opacity: 1;
 }
 
 
