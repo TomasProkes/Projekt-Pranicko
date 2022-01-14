@@ -3,6 +3,9 @@ import SelectColorOption from '../SelectColorOption';
 
 const SelectColor = ({handleColor, colorSet, selection, isInvalid}) => (
   <div className={isInvalid ? "field field--error" : "field"}>
+    {
+      isInvalid && <span className="field--error-text">Vyberte prosím barvu přáníčka</span>
+    }
     <label className="field__label">Barva přáníčka</label>
 
     <div className="field__swatch-group field__swatch-group--round">
