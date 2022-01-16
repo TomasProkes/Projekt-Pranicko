@@ -3,8 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Card from '../Card';
 
 const DisplayCard = ({apiBaseUrl}) => {
-  // TODO remove this line after all works fine
-  apiBaseUrl = 'https://xmas-api.itgirls.cz/cards'
 
   const { cardId } = useParams()
   console.log('api base url : ' + apiBaseUrl)
