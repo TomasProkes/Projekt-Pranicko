@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../Header';
 
 //  TODO :  Collect ->  CardPickup
-const Collect = () => {
+const Collect = ({apiBaseUrl}) => {
   const title = 'Vyzvednout přáníčko'
   const labelText = 'Zadej šestimístný kód přáníčka'
   const [pickupId, setPickupId] = useState('')
@@ -17,8 +17,21 @@ const Collect = () => {
     e.preventDefault()
 
     if (pickupId.length === 6) {
-      navigate(`/card/${pickupId}`)
+      fetch(`${apiBaseUrl}/${pickupId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // setCardData(data.data)
+          navigate(`/card/${pickupId}`)
+        } else {
+          console.log('Code not found :')
+          console.log(pickupId)
+          // navigate('/notfound')
+        }
+      })
+
     } else {
+      console.log('Code too short :')
       console.log(pickupId)
       // TODO add validation msg about insufficient card id length
     }
