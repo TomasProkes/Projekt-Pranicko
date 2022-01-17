@@ -7,6 +7,8 @@ const Collect = ({apiBaseUrl}) => {
   const title = 'Vyzvednout přáníčko'
   const labelText = 'Zadej šestimístný kód přáníčka'
   const [pickupId, setPickupId] = useState('')
+  const [pickupIdTooShort, setPickupIdTooShort] = useState(false)
+  const [pickupIdInvalid, setPickupIdInvalid] = useState(false)
   const navigate = useNavigate()
 
   const handleInputChange = (e) => {
@@ -26,14 +28,14 @@ const Collect = ({apiBaseUrl}) => {
         } else {
           console.log('Code not found :')
           console.log(pickupId)
-          // navigate('/notfound')
+          setPickupIdInvalid(true)
         }
       })
 
     } else {
       console.log('Code too short :')
       console.log(pickupId)
-      // TODO add validation msg about insufficient card id length
+      setPickupIdTooShort(true)
     }
   }
 
