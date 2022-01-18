@@ -8,6 +8,7 @@ const Collect = ({apiBaseUrl}) => {
   const labelText = 'Zadej šestimístný kód přáníčka'
   const [pickupId, setPickupId] = useState('')
   const [pickupIdTooShort, setPickupIdTooShort] = useState(false)
+  // TODO pickupIdInvalid => pickupIdNotFound !!  (to make the code clear)
   const [pickupIdInvalid, setPickupIdInvalid] = useState(false)
   const navigate = useNavigate()
 
@@ -26,6 +27,7 @@ const Collect = ({apiBaseUrl}) => {
           // setCardData(data.data)
           navigate(`/card/${pickupId}`)
         } else {
+          setPickupIdTooShort(false)
           console.log('Code not found :')
           console.log(pickupId)
           setPickupIdInvalid(true)
@@ -33,6 +35,7 @@ const Collect = ({apiBaseUrl}) => {
       })
 
     } else {
+      setPickupIdInvalid(false)
       console.log('Code too short :')
       console.log(pickupId)
       setPickupIdTooShort(true)
@@ -49,8 +52,13 @@ const Collect = ({apiBaseUrl}) => {
           <label htmlFor="pickup-code" className="pickup__label">{labelText}</label>
 
           <div className="box shadow mb-30">
-            <div className="box__inside pt-0 pb-0">
-
+            <div className={pickupIdTooShort || pickupIdInvalid ? "box__inside pt-0 pb-0 box__inside--error" : "box__inside pt-0 pb-0"}>
+              {
+                pickupIdTooShort && <span className='box__inside--error-text'>Kód musí být šestimístný, překontrolujte jej prosím</span>
+              }
+              {
+                pickupIdInvalid && <span className='box__inside--error-text'>Kód nebyl nalezen, překontrolujte jej prosím</span>
+              }
               <input onChange={handleInputChange} id="pickup-code" className="pickup__code" type="text" maxLength="6" autoComplete="off" value={pickupId}/>
 
             </div>
