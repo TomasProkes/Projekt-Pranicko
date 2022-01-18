@@ -3,7 +3,7 @@ import Header from '../Header';
 
 const CardReady = ({cardId, createNewCard}) => {
   const title = 'Přáníčko je připravené'
-  const baseUrl = 'https://online-card-maker.netlify.app/card'  // TODO should be an env variable in netlify??
+  const baseUrl = 'https://online-card-maker.netlify.app/card'  // TODO import as an env variable from netlify
 
   return (
     <>
