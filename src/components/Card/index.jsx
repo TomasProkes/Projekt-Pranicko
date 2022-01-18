@@ -14,19 +14,16 @@ const Card = ({cardData}) => {
       play()
       setOpen(true)
     }
-    // TODO remove previous version :
-    // setOpen(isOpen => !isOpen)
   }
 
   return (
     <>
       {/* <!--
-        Tenhle div představuje pozadí celé stránky za přáníčkem.
-        Můžeš na něj přidat jednu z následujících tříd pro varianty pozadí:
+        Div element for the background theme of the greeting card. The class can be any of:
         .background--red, .background--green, .background--blue, .background--gold
         .background--tree, .background--decorations, .background--snow
 
-        Takže třeba zlaté pozadí bude:
+        E.g. golden background will be specified as:
         <div className="background background--gold">
       --> */}
       <div className={`background background--${cardData.background}`}>
@@ -46,25 +43,10 @@ const Card = ({cardData}) => {
         </div>
 
 
-        {/* <!--
-          Na tenhle div půjde kliknout, což by mělo otevřít/zavřít přáníčko.
-
-          Stačí na něj po kliknutí přidat třídu .card--open a přáníčko se otevře.
-          Když ji odebereš, tak se zase zavře.
-
-          Přidáním jedné z následujících tříd nastavíš barvu pozadí obálky
-          a také levé strany uvnitř přáníčka.
-          .card--red, .card--green, .card--blue, .card--gold
-
-          Takže třeba otevřená modrá kartička bude:
-          <div className="card card--blue card--open">
-        --> */}
+        {/* <!-- Clicking this div opens or closes the greeting card --> */}
         <div onClick={toggleAppearance} className={isOpen ? `card card--open card--${cardData.color}` : `card card--${cardData.color}`}>
 
-          {/* <!--
-            Vnější obálka
-            Nastav do src obrázku správné SVG tvojí vybrané obálky.
-          --> */}
+          {/* <!-- Outside cover --> */}
           <div className="cover">
             <img className="cover__image" src={`/assets/images/covers/${cardData.cover}.svg`} />
           </div>
