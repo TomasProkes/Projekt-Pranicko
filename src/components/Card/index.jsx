@@ -14,65 +14,42 @@ const Card = ({cardData}) => {
       play()
       setOpen(true)
     }
-    // TODO remove previous version :
-    // setOpen(isOpen => !isOpen)
   }
 
   return (
     <>
       {/* <!--
-        Tenhle div představuje pozadí celé stránky za přáníčkem.
-        Můžeš na něj přidat jednu z následujících tříd pro varianty pozadí:
+        Div element for the background theme of the greeting card. The class can be any of:
         .background--red, .background--green, .background--blue, .background--gold
         .background--tree, .background--decorations, .background--snow
 
-        Takže třeba zlaté pozadí bude:
+        E.g. golden background will be specified as:
         <div className="background background--gold">
       --> */}
       <div className={`background background--${cardData.background}`}>
 
         <div className="snow">
           {/* <!--
-            Pokud chceš, tak sem vložíš sníh, který bude padat na pozadí.
+            Display the snowflakes falling in the background, using the react-snowfall library:
 
-            Nainstaluj si do projektu tuhle knihovnu:
             https://www.npmjs.com/package/react-snowfall
-            A pak vlož a nastav komponentu podle dokumentace.
 
-            Pravděpodobně to bude vypadat nějak takhle:
+            Usage example:
             <Snowfall snowflakeCount={200} />
           --> */}
           <Snowfall snowflakeCount={cardData.snow} />
         </div>
 
 
-        {/* <!--
-          Na tenhle div půjde kliknout, což by mělo otevřít/zavřít přáníčko.
-
-          Stačí na něj po kliknutí přidat třídu .card--open a přáníčko se otevře.
-          Když ji odebereš, tak se zase zavře.
-
-          Přidáním jedné z následujících tříd nastavíš barvu pozadí obálky
-          a také levé strany uvnitř přáníčka.
-          .card--red, .card--green, .card--blue, .card--gold
-
-          Takže třeba otevřená modrá kartička bude:
-          <div className="card card--blue card--open">
-        --> */}
+        {/* <!-- Clicking this div opens or closes the greeting card --> */}
         <div onClick={toggleAppearance} className={isOpen ? `card card--open card--${cardData.color}` : `card card--${cardData.color}`}>
 
-          {/* <!--
-            Vnější obálka
-            Nastav do src obrázku správné SVG tvojí vybrané obálky.
-          --> */}
+          {/* <!-- Outside cover --> */}
           <div className="cover">
             <img className="cover__image" src={`/assets/images/covers/${cardData.cover}.svg`} />
           </div>
 
-          {/* <!--
-            Levá vnitřní strana
-            Sem doplníš text přáníčka a podpis.
-          --> */}
+          {/* <!-- Inner left page of the card, containing the text and the sender's name --> */}
           <div className="inside-left">
             <div className="inside-left__content">
               <div className="inside-left__text">{cardData.text}</div>
@@ -82,10 +59,9 @@ const Card = ({cardData}) => {
           </div>
 
           {/* <!--
-            Pravá vnitřní strana
-            Fotky jsou v projektu zadané napevno. Klidně si je vyměň za svoje,
-            ale zachovej jejich velikost a poměr stran. CSS není na jinou variantu
-            připravené a přání by mohlo vypadat divně.
+            Inner right page of the card, contaning the photos.
+            The size and the 2:3 ratio of the photos needs to be preserved at the moment 
+            since the CSS does not expect different ones.
           --> */}
           <div className="inside-right">
             <div className="photo photo1"><img src="/assets/images/photos/photo1.jpg" /></div>
@@ -94,11 +70,11 @@ const Card = ({cardData}) => {
             <div className="photo photo4"><img src="/assets/images/photos/photo4.jpg" /></div>
           </div>
 
-          {/* </div><!-- konec .card --> */}
-
           <p className="instructions">Kliknutím {isOpen ? "zavřete" : "otevřete"}</p>
 
+          {/* </div><!-- end of the .card --> */}
         </div>
+
         {/* <!-- konec .background --> */}
       </div>
     </>

@@ -10,7 +10,7 @@ import DisplayCard from './components/DisplayCard';
 import './style.css';
 
 const App = () => {
-  const apiBaseUrl = 'https://xmas-api.itgirls.cz/cards'; // TODO should be an env variable in netlify??
+  const apiBaseUrl = 'https://xmas-api.itgirls.cz/cards'; // TODO import as an env variable from netlify
   
   return (
     <>
