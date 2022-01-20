@@ -109,6 +109,51 @@ h1, h2, h3 {
 	padding: 30px;
 }
 
+.box__inside--error {
+	position: relative;
+	border: 2px solid var(--color-red-error);
+	border-radius: 6px;
+	padding: 10px;
+}
+
+.box__inside--error:hover {
+	border-width: 3px;
+	padding: 9px;
+}
+
+/* error tooltip with help text */
+.box__inside--error-text {
+	visibility: hidden;
+  width: 160px;
+  background-color: var(--color-red-error);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 105%;
+  left: 50%;
+  margin-left: -80px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.box__inside--error .box__inside--error-text::after {
+	content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--color-red-error) transparent transparent transparent;
+}
+
+.box__inside--error:hover .box__inside--error-text {
+	visibility: visible;
+  opacity: 1;
+}
 
 /* ----------------------------------------------- */
 /* omezeni sirky obsahu */
